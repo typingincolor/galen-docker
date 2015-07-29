@@ -13,6 +13,14 @@ galen:
     - GALEN_INFLUXDB_PASSWORD=root
     - GALEN_INFLUXDB_NAME=galen
     - SPRING_DATASOURCE_URL=jdbc:h2:file:/data/galen
+galenweb:
+  image: typingincolor/galen-web
+  ports:
+    - "8081:8081"
+  volumes:
+    - ~/docker/galen:/tmp
+  links:
+    - galen
 influxdb:
   image: tutum/influxdb
   ports:
