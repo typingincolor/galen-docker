@@ -1,0 +1,24 @@
+galen:
+  image: typingincolor/galen
+  ports:
+    - "8080:8080"
+  volumes:
+    - ~/docker/galen:/tmp
+    - ~/docker/galendb:/data
+  links:
+    - influxdb
+  environment:
+    - GALEN_INFLUXDB_URL=http://influxdb:8086
+    - GALEN_INFLUXDB_USERNAME=root
+    - GALEN_INFLUXDB_PASSWORD=root
+    - GALEN_INFLUXDB_NAME=galen
+    - SPRING_DATASOURCE_URL=jdbc:h2:file:/data/galen
+influxdb:
+  image: tutum/influxdb
+  ports:
+    - "8086:8086"
+    - "8083:8083"
+#  volumes:
+#    - ~/docker/influxdb:/data
+  environment:
+    - PRE_CREATE_DB=galen
