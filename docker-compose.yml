@@ -21,6 +21,8 @@ galenweb:
     - ~/docker/galen:/tmp
   links:
     - galen
+  environment:
+    - GALEN_URL=http://galen:8080
 influxdb:
   image: tutum/influxdb
   ports:
