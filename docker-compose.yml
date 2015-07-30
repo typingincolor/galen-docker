@@ -28,7 +28,7 @@ influxdb:
   ports:
     - 8086
     - 8083
-#  volumes:
-#    - ~/docker/influxdb:/data
+  volumes:
+    - ~/docker/influxdb:/data
   environment:
     - PRE_CREATE_DB=galen
