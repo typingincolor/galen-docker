@@ -3,7 +3,6 @@ galen:
   ports:
     - "8080:8080"
   volumes:
-    - ~/docker/galen:/tmp
     - ~/docker/galendb:/data
   links:
     - influxdb
@@ -17,8 +16,6 @@ galenweb:
   image: typingincolor/galen-web
   ports:
     - "8081:8081"
-  volumes:
-    - ~/docker/galen:/tmp
   links:
     - galen
   environment:
